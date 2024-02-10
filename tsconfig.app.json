@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.ts", "src/**/*.d.ts", "src/**/**/*.ts", "src/**/**/*.d.ts", "src/components/ui/toggle/*.ts", "src/components/ui/separator/index.ts"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.ts", "src/**/*.d.ts", "src/**/**/*.ts", "src/**/**/*.d.ts", "src/components/ui/toggle/*.ts", "src/components/ui/separator/index.ts", "src/components/ui/avatar/index.ts"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,

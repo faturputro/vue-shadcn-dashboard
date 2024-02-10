@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "description": "Vue 3 Shadcn Dashboard",
+  "author": {
+    "name": "Faturachman Dwi Putro",
+    "email": "faturachmanputro@gmail.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",

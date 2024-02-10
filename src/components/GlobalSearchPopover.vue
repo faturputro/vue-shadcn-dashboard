@@ -2,7 +2,7 @@
 import { Popover, PopoverTrigger, PopoverContent } from './ui/popover';
 import { Separator } from './ui/separator';
 import { Input } from './ui/input';
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import router from '@/router';
 import { APP_MENU } from '@/config/app';
@@ -20,13 +20,16 @@ const mappedMenu = Object.entries(APP_MENU).flatMap(([key, value]) => {
   return value.routes.map((r) => ({
     ...r,
     key: `${key}-${r.path}`,
-    description: `${value.name} - ${r.description || r.title}`,
+    description: `${value.name}: ${r.description || r.title}`,
     isActive: route.path === `/dashboard/${r.path}`
   }));
 })
 
 const searchList = computed(() => {
-  return mappedMenu.filter((item) => item.title.toLowerCase().includes(search.value.toLowerCase()))
+  return mappedMenu.filter((item) =>
+    item.title.toLowerCase().includes(search.value.toLowerCase()) ||
+    item.description.toLowerCase().includes(search.value.toLowerCase())
+  );
 });
 
 const onKeyDown = (e: KeyboardEvent) => {
@@ -51,23 +54,43 @@ const onKeyDown = (e: KeyboardEvent) => {
 const handleClick = (path: string) => {
   const toRoute = `/dashboard/${path}`;
   router.push(toRoute);
-}
+};
+
+const handleGlobalSearchTrigger = (e: KeyboardEvent) => {
+  const input = document.getElementById('globalSearchInput')?.children[1] as HTMLInputElement;
+  if ((e.shiftKey && e.metaKey && e.key === 'g') || (e.shiftKey && e.ctrlKey && e.key === 'g')) {
+    e.preventDefault();
+    input.focus();
+  }
+  if (e.key === 'Escape') {
+    input.blur();
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('keydown', handleGlobalSearchTrigger);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleGlobalSearchTrigger);
+})
 </script>
 
 <template>
   <Popover :open="isFocused">
     <PopoverTrigger class="w-full">
       <Input
+        id="globalSearchInput"
         v-model="search"
         placeholder="Search..."
         prepend-icon="search"
-        class="w-full"
+        class="w-full global-search__input"
         @focus="handleFocus"
         @blur="handleFocus"
         @keydown="onKeyDown"
       ></Input>
     </PopoverTrigger>
-    <PopoverContent align="start" class="mt-1 w-[500px] h-96 overflow-y-auto">
+    <PopoverContent align="start" class="mt-1 w-[500px] h-96 custom_scroll">
       <div class="pb-4">
         <h4 class="font-semibold mb-2 text-lg">Pages</h4>
         <ul>
@@ -75,13 +98,13 @@ const handleClick = (path: string) => {
             v-for="(menu, i) in searchList"
             :key="menu.key" class="flex items-center mb-2 rounded-lg border p-2"
             :class="[
-              menu.isActive ? 'bg-gray-100': 'cursor-pointer',
-              i === activeIndex ? 'border-2 border-slate-950' : '',
+              menu.isActive ? 'bg-gray-100 dark:bg-slate-700': 'cursor-pointer',
+              i === activeIndex ? 'border-2 border-slate-950 dark:border-slate-300' : '',
             ]"
             @click="handleClick(menu.path)"
           >
-            <div class="rounded-md bg-slate-100 w-12 h-12 flex items-center justify-center mr-4">
-              <span class="text-slate-500 flex items-center"><vue-feather :type="menu.icon"></vue-feather></span>
+            <div class="rounded-md bg-slate-100 dark:bg-slate-800 w-12 h-12 flex items-center justify-center mr-4">
+              <span class="text-slate-500 dark:text-foreground flex items-center"><vue-feather :type="menu.icon"></vue-feather></span>
             </div>
             <div>
               <p class="font-medium">{{ menu.title }}</p>

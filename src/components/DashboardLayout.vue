@@ -12,9 +12,9 @@ onMounted(() => {
 <template>
   <div>
     <DashboardSidebar/>
-    <div class="relative app-container" :style="`left: ${left}px`">
+    <div class="relative app-container" :style="`left: ${left}px;width: calc(100% - ${left}px)`">
       <DashboardNavbar />
-      <div class="p-8">
+      <div class="p-6">
         <RouterView />
       </div>
     </div>
