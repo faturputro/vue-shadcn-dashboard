@@ -1,22 +1,23 @@
 import { defineStore } from 'pinia';
 
-interface IAppStoreState {
-  themeMode: 'light' | 'dark';
-}
-
 const LIGHT = 'light';
 const DARK = 'dark';
 const THEME_KEY = 'themeMode';
 
 export const useAppStore = defineStore('app', {
-  state: (): IAppStoreState => ({
+  state: () => ({
     themeMode: LIGHT,
+    sidebarExpand: true,
   }),
   getters: {
     theme: (state) => state.themeMode,
     isDark: (state) => state.themeMode === DARK,
+    sidebarExpanded: (state) => state.sidebarExpand,
   },
   actions: {
+    toggleSidebar() {
+      this.sidebarExpand = !this.sidebarExpand;
+    },
     initTheme() {
       const cache = localStorage.getItem(THEME_KEY);
       if (cache) {

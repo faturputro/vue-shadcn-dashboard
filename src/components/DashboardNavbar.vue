@@ -10,6 +10,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import Breadcrumb from './ui/Breadcrumb.vue';
 import {
   LogOut,
   User,
@@ -29,14 +30,17 @@ const toggleMode = () => {
 
 <template>
   <nav class="flex items-center justify-between bg-background h-[64px] w-full border-b-[1px] px-4">
-    <div class="w-96">
+    <div class="w-24">
+      <Breadcrumb />
+    </div>
+    <div class="w-2/5">
       <GlobalSearchPopover />
     </div>
     <div class="flex items-center">
       <Button variant="outline" class="border-0 p-[6px] w-8 h-8">
         <Bell />
       </Button>
-      <Button variant="outline" class="border-0 p-[6px] w-8 h-8" @click="toggleMode">
+      <Button variant="outline" class="border-0 p-[6px] ml-2 w-8 h-8" @click="toggleMode">
         <Sun v-if="store.isDark" />
         <MoonStar v-else />
       </Button>

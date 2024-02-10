@@ -19,6 +19,7 @@ const handleFocus = (e: FocusEvent & { isFocused: boolean }) => {
 const mappedMenu = Object.entries(APP_MENU).flatMap(([key, value]) => {
   return value.routes.map((r) => ({
     ...r,
+    section: value.name,
     key: `${key}-${r.path}`,
     description: `${value.name}: ${r.description || r.title}`,
   }));
@@ -27,7 +28,8 @@ const mappedMenu = Object.entries(APP_MENU).flatMap(([key, value]) => {
 const searchList = computed(() => {
   return mappedMenu.filter((item) =>
     item.title.toLowerCase().includes(search.value.toLowerCase()) ||
-    item.description.toLowerCase().includes(search.value.toLowerCase())
+    item.description.toLowerCase().includes(search.value.toLowerCase()) ||
+    item.section.toLowerCase().includes(search.value.toLowerCase())
   ).map((menu) => ({ ...menu, isActive: route.path === `/dashboard/${menu.path}` }));
 });
 
@@ -90,7 +92,7 @@ onUnmounted(() => {
         @keydown="onKeyDown"
       ></Input>
     </PopoverTrigger>
-    <PopoverContent align="start" class="mt-1 w-[500px] h-96 custom_scroll">
+    <PopoverContent class="mt-2 w-[500px] h-96 custom_scroll">
       <div class="pb-4">
         <h4 class="font-semibold mb-2 text-lg">Pages</h4>
         <ul>
@@ -98,12 +100,12 @@ onUnmounted(() => {
             v-for="(menu, i) in searchList"
             :key="menu.key" class="flex items-center mb-2 rounded-lg border p-2"
             :class="[
-              menu.isActive ? 'bg-gray-100 dark:bg-violet-950/20': 'cursor-pointer',
-              i === activeIndex ? 'border-2 border-violet-950 dark:border-violet-700' : '',
+              menu.isActive ? 'bg-gray-100 dark:bg-muted/40': 'cursor-pointer',
+              i === activeIndex ? 'border-2 border-primary' : '',
             ]"
             @click="handleClick(menu.path)"
           >
-            <div class="rounded-md bg-violet-100 dark:bg-violet-600/75 w-12 h-12 flex items-center justify-center mr-4">
+            <div class="rounded-md bg-violet-100 dark:bg-muted w-12 h-12 flex items-center justify-center mr-4">
               <span class="text-violet-500 dark:text-foreground flex items-center"><vue-feather :type="menu.icon"></vue-feather></span>
             </div>
             <div>

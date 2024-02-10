@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { computed } from 'vue';
 import DashboardSidebar from './DashboardSidebar.vue';
 import DashboardNavbar from './DashboardNavbar.vue';
+import { useAppStore } from '@/stores/app';
 
-const left = ref<number>(0);
-onMounted(() => {
-  left.value = document.querySelector('.sidebar')!.getBoundingClientRect().right;
+const left = computed(() => {
+  return useAppStore().sidebarExpanded ? 280 : 72;
 })
 </script>
 
 <template>
   <div>
     <DashboardSidebar/>
-    <div class="relative app-container" :style="`left: ${left}px;width: calc(100% - ${left}px)`">
+    <div class="relative app-container dashboard-main" :style="`left: ${left}px;width: calc(100% - ${left}px)`">
       <DashboardNavbar />
       <div class="p-6">
         <RouterView />
