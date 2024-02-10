@@ -97,7 +97,7 @@ const toggleSidebar = () => {
         </div>
       </div>
 
-      <div class="border-t-[1px] transition-all duration-400 delay-500" :class="store.sidebarExpanded ? 'opacity-100 py-4' : 'opacity-0 py-0'">
+      <div class="border-t-[1px] transition-all duration-400 py-4" :class="store.sidebarExpanded ? 'opacity-100' : 'opacity-0'">
         <p class="text-xs text-foreground/50 text-center">&copy; 2024 Dashcn</p>
       </div>
     </div>
