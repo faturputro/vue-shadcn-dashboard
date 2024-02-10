@@ -3,3 +3,9 @@
 body {
   background-color: #FBFBFD;
 }
+
+.left-placholder::before {
+  content: attr(placeholder);
+  position: relative;
+  left: 20px;
+}

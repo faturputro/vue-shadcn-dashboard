@@ -3,7 +3,7 @@ import { Toggle } from '@/components/ui/toggle';
 import router from '@/router';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { APP_MENU } from '@/constants/app';
+import { APP_MENU } from '@/config/app';
 
 const route = useRoute()
 
@@ -43,3 +43,4 @@ const handleNavigate = (path: string) => {
     </div>
   </div>
 </template>
+@/config/app
