@@ -20,7 +20,7 @@ const menus = computed(() => Object.entries(APP_MENU).map(([key, value]) => ({
 ));
 
 const handleNavigate = (path: string) => {
-  router.push(`/dashboard/${path}`);
+  router.push(path);
 };
 </script>
 
@@ -36,10 +36,10 @@ const handleNavigate = (path: string) => {
       </Button>
     </div>
     <div v-for="menu in menus" :key="menu.key" class="px-4 py-8 border-b-[1px]">
-      <p class="uppercase text-xs font-medium text-gray-400 mb-2 tracking-widest">{{ menu.name }}</p>
+      <p class="uppercase text-xs font-light text-gray-400 mb-2 tracking-widest">{{ menu.name }}</p>
       <ul>
         <li v-for="child in menu.routes" :key="`${menu.key}-${child.path}`" class="flex items-center mb-1 rounded-md">
-          <Toggle class="w-full justify-start" :pressed="child.active" @click="handleNavigate(route.path)">
+          <Toggle class="w-full justify-start" :pressed="child.active" @click="handleNavigate(child.path)">
             <span class="mr-4 flex items-center"><vue-feather :type="child.icon"></vue-feather></span>
             {{ child.title }}
           </Toggle>

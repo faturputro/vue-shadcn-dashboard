@@ -32,6 +32,30 @@ const router = createRouter({
             title: 'Home',
           } as RouteMeta & IRouteMeta
         },
+        {
+          path: 'article',
+          name: 'article_index',
+          component: () => import('@/views/dashboard/articles/Index.vue'),
+          meta: {
+            title: 'Article',
+          } as RouteMeta & IRouteMeta
+        },
+        {
+          path: 'user',
+          name: 'user_index',
+          component: () => import('@/views/dashboard/user/Index.vue'),
+          meta: {
+            title: 'User',
+          } as RouteMeta & IRouteMeta
+        },
+        {
+          path: 'settings',
+          name: 'settings_index',
+          component: () => import('@/views/dashboard/settings/Index.vue'),
+          meta: {
+            title: 'Settings',
+          } as RouteMeta & IRouteMeta
+        },
       ],
     },
   ]

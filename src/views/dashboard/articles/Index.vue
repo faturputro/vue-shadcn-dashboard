@@ -1,5 +1,5 @@
 <template>
   <div>
-    <page-header>Overview</page-header>
+    <page-header>Articles</page-header>
   </div>
 </template>

@@ -8,7 +8,7 @@ interface IDashboardMenus {
 
 export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] }> = {
   main: {
-    name: 'Modules',
+    name: 'Core',
     routes: [
       {
         title: 'Dashboard',
@@ -27,15 +27,15 @@ export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] 
     name: 'General',
     routes: [
       {
+        path: 'user',
         title: 'User',
         icon: 'users',
-        path: 'user',
         description: 'Manage User'
       },
       {
+        path: 'settings',
         title: 'Settings',
         icon: 'settings',
-        path: 'settings',
         description: 'Settings'
       },
     ],

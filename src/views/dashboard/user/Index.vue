@@ -1,5 +1,5 @@
 <template>
   <div>
-    <page-header>Overview</page-header>
+    <page-header>User</page-header>
   </div>
 </template>

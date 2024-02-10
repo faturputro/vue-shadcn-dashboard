@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
 import GlobalSearchPopover from './GlobalSearchPopover.vue';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -19,32 +18,13 @@ import {
   MoonStar,
 } from 'lucide-vue-next'
 import { Button } from './ui/button';
+import { useAppStore } from '@/stores/app';
 
-const isDark = ref<boolean>(false);
+const store = useAppStore();
 
 const toggleMode = () => {
-  isDark.value = !isDark.value;
-  if (isDark.value) {
-    localStorage.setItem('themeMode', 'dark');
-    document.documentElement.classList.remove('light');
-    document.documentElement.classList.add('dark');
-    document.body.classList.remove('light');
-    document.body.classList.add('dark');
-  } else {
-    localStorage.setItem('themeMode', 'light');
-    document.documentElement.classList.remove('dark');
-    document.documentElement.classList.add('light');
-    document.body.classList.remove('dark');
-    document.body.classList.add('light');
-  }
+  store.toggleTheme();
 };
-
-onMounted(() => {
-  const cachedTheme = localStorage.getItem('themeMode');
-  if (cachedTheme) {
-    isDark.value = cachedTheme === 'dark';
-  }
-});
 </script>
 
 <template>
@@ -57,7 +37,7 @@ onMounted(() => {
         <Bell />
       </Button>
       <Button variant="outline" class="border-0 p-[6px] w-8 h-8" @click="toggleMode">
-        <Sun v-if="isDark" />
+        <Sun v-if="store.isDark" />
         <MoonStar v-else />
       </Button>
       <div class="border-x-[1px] border-gray-300 h-[24px] w-[1px] mx-2"></div>
