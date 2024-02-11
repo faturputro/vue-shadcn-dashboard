@@ -2,6 +2,8 @@
 import { computed } from 'vue';
 import * as icons from 'lucide-vue-next';
 
+type IconsType = Record<string, any>;
+
 const props = defineProps({
   name: {
     type: String,
@@ -16,15 +18,15 @@ const props = defineProps({
   defaultClass: String
 });
 
-const icon = computed(() => icons[props.name]);
+const icon = computed(() => (icons as IconsType)[props.name]);
 </script>
 
 <template>
   <component
     :is="icon"
-    :size="size"
-    :color="color"
-    :stroke-width="strokeWidth"
-    :default-class="defaultClass"
+    :size="props.size"
+    :color="props.color"
+    :stroke-width="props.strokeWidth"
+    :class="props.defaultClass"
   ></component>
 </template>

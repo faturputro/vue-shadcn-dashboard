@@ -3,7 +3,6 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwind from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
-import tailwindConfig from './tailwind.config';
 
 export default defineConfig(({ mode }) => {
   const rootDir = path.resolve(__dirname, 'src');
@@ -21,9 +20,7 @@ export default defineConfig(({ mode }) => {
       postcss: {
         plugins: [
           autoprefixer(),
-          tailwind({
-            config: { ...tailwindConfig },
-          }),
+          tailwind(),
         ],
       },
     },
@@ -35,6 +32,7 @@ export default defineConfig(({ mode }) => {
     build: {
       minify: production,
       sourcemap: production,
+      outDir: path.resolve(rootDir, '..', 'dist'),
     },
   }
 });
