@@ -1,46 +1,24 @@
-# vue
+<p align="center">
+ <img align="center" src="https://raw.githubusercontent.com/radix-vue/shadcn-vue/dev/apps/www/src/public/android-chrome-192x192.png" height="96" />
+ <h1 align="center">
+  Vue Shadcn Admin
+ </h1>
+</p>
 
-This template should help get you started developing with Vue 3 in Vite.
+![hero](src/assets/screenshot-dark.png)
+![hero](src/assets/screenshot-light.png)
 
-## Recommended IDE Setup
+## Documentation
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[View documentation here](https://www.shadcn-vue.com/docs/introduction.html)
 
-## Type Support for `.vue` Imports in TS
+## Credits
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+All credits go to these open-source works and resources
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- [Shadcn UI](https://ui.shadcn.com) for creating this beautiful project.
+- [Shadcn Svelte](https://shadcn-svelte.com) for some inspiration for registry.
+- [Radix Vue](https://radix-vue.com) for doing all the hard work to make sure components are accessible.
+- [VueUse](https://vueuse.org) for providing many useful utilities.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- [ahmedmayara](https://github.com/ahmedmayara/shadcn-vue) for populating many components

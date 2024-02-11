@@ -29,7 +29,7 @@ const toggleMode = () => {
 </script>
 
 <template>
-  <nav class="flex items-center justify-between bg-background h-[64px] w-full border-b-[1px] px-4">
+  <nav class="flex items-center justify-between h-[64px] border-b-[1px] px-4 fixed z-40 top-0 bg-background/80 backdrop-blur-lg border-b border-border" :style="{ width: `calc(100% - ${store.sidebarExpanded ? 280 : 72}px)` }">
     <div class="w-24">
       <Breadcrumb />
     </div>

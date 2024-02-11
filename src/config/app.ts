@@ -14,12 +14,12 @@ export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] 
     routes: [
       {
         title: 'Dashboard',
-        icon: 'layout',
+        icon: 'LayoutDashboard',
         path: 'home',
       },
       {
         title: 'Article',
-        icon: 'file-text',
+        icon: 'Newspaper',
         path: 'article',
         description: 'Manage Articles'
       },
@@ -31,13 +31,13 @@ export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] 
       {
         path: 'user',
         title: 'User',
-        icon: 'users',
+        icon: 'Users',
         description: 'Manage User'
       },
       {
         path: 'settings',
         title: 'Settings',
-        icon: 'settings',
+        icon: 'Settings2',
         description: 'Settings'
       },
     ],

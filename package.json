@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Vue 3 Shadcn Dashboard",
+  "description": "Vue Shadcn Admin",
   "author": {
     "name": "Faturachman Dwi Putro",
     "email": "faturachmanputro@gmail.com"
@@ -20,6 +20,7 @@
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
     "@tanstack/vue-table": "^8.11.8",
+    "@unovis/vue": "^1.3.3",
     "@vee-validate/zod": "^4.12.5",
     "@vueuse/core": "^10.7.2",
     "class-variance-authority": "^0.7.0",

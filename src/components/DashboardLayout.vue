@@ -5,7 +5,7 @@ import DashboardNavbar from './DashboardNavbar.vue';
 import { useAppStore } from '@/stores/app';
 
 const left = computed(() => {
-  return useAppStore().sidebarExpanded ? 280 : 72;
+  return useAppStore().sidebarExpanded ? 280 : 64;
 })
 </script>
 
@@ -14,8 +14,12 @@ const left = computed(() => {
     <DashboardSidebar/>
     <div class="relative app-container dashboard-main" :style="`left: ${left}px;width: calc(100% - ${left}px)`">
       <DashboardNavbar />
-      <div class="p-6">
-        <RouterView />
+      <div class="p-6 max-w-[1280px] m-auto mt-[64px]">
+        <RouterView v-slot="{ Component }">
+          <transition name="fade" mode="out-in">
+            <component :is="Component"></component>
+          </transition>
+        </RouterView>
       </div>
     </div>
   </div>

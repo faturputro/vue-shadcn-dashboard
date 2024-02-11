@@ -8,7 +8,8 @@ interface Props extends PrimitiveProps {
   variant?: ButtonVariants['variant']
   size?: ButtonVariants['size']
   as?: string
-  class?: HTMLAttributes['class']
+  class?: HTMLAttributes['class'],
+  prependIcon?: string,
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -21,7 +22,9 @@ const props = withDefaults(defineProps<Props>(), {
     :as="as"
     :as-child="asChild"
     :class="cn(buttonVariants({ variant, size }), props.class)"
+    class="flex items-center"
   >
+    <Icon v-if="prependIcon" :name="prependIcon" class="mr-2 h-6 w-6" />
     <slot />
   </Primitive>
 </template>

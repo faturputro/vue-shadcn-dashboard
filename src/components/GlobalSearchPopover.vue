@@ -13,7 +13,7 @@ const activeIndex = ref<number>(-1);
 const route = useRoute();
 const handleFocus = (e: FocusEvent & { isFocused: boolean }) => {
   activeIndex.value = -1;
-  isFocused.value = e.isFocused
+  isFocused.value = e.isFocused;
 }
 
 const mappedMenu = Object.entries(APP_MENU).flatMap(([key, value]) => {
@@ -85,7 +85,7 @@ onUnmounted(() => {
         id="globalSearchInput"
         v-model="search"
         placeholder="Search..."
-        prepend-icon="search"
+        prepend-icon="Search"
         class="w-full global-search__input"
         @focus="handleFocus"
         @blur="handleFocus"
@@ -106,7 +106,7 @@ onUnmounted(() => {
             @click="handleClick(menu.path)"
           >
             <div class="rounded-md bg-violet-100 dark:bg-muted w-12 h-12 flex items-center justify-center mr-4">
-              <span class="text-violet-500 dark:text-foreground flex items-center"><vue-feather :type="menu.icon"></vue-feather></span>
+              <span class="text-violet-500 dark:text-foreground flex items-center"><Icon :name="menu.icon" /></span>
             </div>
             <div>
               <p class="font-medium">{{ menu.title }}</p>
@@ -118,17 +118,7 @@ onUnmounted(() => {
       <Separator />
       <div class="py-4">
         <h4 class="font-semibold mb-2 text-lg">In This Page</h4>
-        <ul>
-          <li v-for="menu in mappedMenu" :key="menu.path" class="flex items-center mb-2 rounded-md border p-2">
-            <div class="rounded-md bg-slate-100 w-12 h-12 flex items-center justify-center mr-4">
-              <span class="text-slate-500 flex items-center"><vue-feather :type="menu.icon"></vue-feather></span>
-            </div>
-            <div>
-              <p class="font-medium">{{ menu.title }}</p>
-              <p class="text-sm text-slate-500">{{ menu.description }}</p>
-            </div>
-          </li>
-        </ul>
+        <p class="text-muted">Or your custom search result here</p>
       </div>
     </PopoverContent>
   </Popover>

@@ -14,18 +14,18 @@ body.dark {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s;
+  transition: opacity 0.2s linear;
 }
 
 .fade-enter, .fade-leave-to {
-  transition: opacity 0.3s;
+  transition: opacity 0.2s linear;
   opacity: 0;
 }
 
 input:active, input:focus, input:blur {
   outline: none;
 }
-.sidebar, .dashboard-main {
+.sidebar, .dashboard-main, nav {
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   overflow-x: hidden;
 }

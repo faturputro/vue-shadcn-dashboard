@@ -5,6 +5,8 @@ import * as z from 'zod';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
 import { FormControl, FormField, FormLabel, FormItem } from '@/components/ui/form';
 
 const formSchema = toTypedSchema(z.object({
@@ -47,10 +49,34 @@ const onSubmit = form.handleSubmit((val) => {
               <FormMessage />
             </FormItem>
           </FormField>
+          <div class="flex items-center space-x-2 mt-4">
+            <Checkbox id="terms" />
+            <Label for="terms">Remember Me</Label>
+          </div>
         </form>
       </CardContent>
       <CardFooter>
-        <Button class="w-full" @click="onSubmit">Login</Button>
+        <div class="w-full">
+          <Button class="w-full" @click="onSubmit">Login</Button>
+          <div class="relative my-4">
+            <div class="absolute inset-0 flex items-center">
+              <span class="w-full border-t" />
+            </div>
+            <div class="relative flex justify-center text-xs uppercase">
+              <span class="bg-background px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <div class="grid gap-4 grid-cols-2">
+            <Button variant="outline" prepend-icon="GithubIcon" class="w-full">
+              Github
+            </Button>
+            <Button variant="outline" prepend-icon="Gitlab" class="w-full">
+              Gitlab
+            </Button>
+          </div>
+        </div>
       </CardFooter>
     </Card>
   </main>
