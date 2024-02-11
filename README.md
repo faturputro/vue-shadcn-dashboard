@@ -5,8 +5,8 @@
  </h1>
 </p>
 
-![hero](src/assets/screenshot-dark.png)
-![hero](src/assets/screenshot-light.png)
+![hero](src/assets/images/screenshot-dark.png)
+![hero](src/assets/images/screenshot-light.png)
 
 ## Documentation
 

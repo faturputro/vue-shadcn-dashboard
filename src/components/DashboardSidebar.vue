@@ -151,7 +151,7 @@ const toggleSidebar = () => {
                       </Toggle>
                     </TooltipTrigger>
                     <template v-if="!store.sidebarExpanded">
-                      <TooltipContent side="right">
+                      <TooltipContent side="right" class="bg-white">
                         <p class="text-sm">Login</p>
                       </TooltipContent>
                     </template>

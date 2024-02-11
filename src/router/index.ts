@@ -31,23 +31,23 @@ const router = createRouter({
         {
           path: 'home',
           name: 'home',
-          component: () => import('@/views/dashboard/Home.vue'),
+          component: () => import('@/views/dashboard/examples/Home.vue'),
           meta: {
             title: 'Home',
           } as RouteMeta & IRouteMeta
         },
         {
-          path: 'article',
-          name: 'article_index',
-          component: () => import('@/views/dashboard/articles/Index.vue'),
+          path: 'task',
+          name: 'tasks_index',
+          component: () => import('@/views/dashboard/examples/tasks/Index.vue'),
           meta: {
-            title: 'Article',
+            title: 'Tasks',
           } as RouteMeta & IRouteMeta
         },
         {
           path: 'user',
           name: 'user_index',
-          component: () => import('@/views/dashboard/user/Index.vue'),
+          component: () => import('@/views/dashboard/examples/user/Index.vue'),
           meta: {
             title: 'User',
           } as RouteMeta & IRouteMeta
@@ -55,7 +55,7 @@ const router = createRouter({
         {
           path: 'settings',
           name: 'settings_index',
-          component: () => import('@/views/dashboard/settings/Index.vue'),
+          component: () => import('@/views/dashboard/examples/settings/Index.vue'),
           meta: {
             title: 'Settings',
           } as RouteMeta & IRouteMeta

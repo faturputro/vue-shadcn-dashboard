@@ -18,10 +18,10 @@ export const APP_MENU: Record<string, { name: string, routes: IDashboardMenus[] 
         path: 'home',
       },
       {
-        title: 'Article',
-        icon: 'Newspaper',
-        path: 'article',
-        description: 'Manage Articles'
+        title: 'Tasks',
+        icon: 'ClipboardCheck',
+        path: 'task',
+        description: 'Manage Tasks'
       },
     ],
   },
