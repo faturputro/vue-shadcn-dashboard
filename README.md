@@ -8,6 +8,9 @@
 ![hero](src/assets/images/screenshot-dark.png)
 ![hero](src/assets/images/screenshot-light.png)
 
+## Preview
+[https://vue-shadcn-dashboard.vercel.app/](https://vue-shadcn-dashboard.vercel.app/)
+
 ## Documentation
 
 [View documentation here](https://www.shadcn-vue.com/docs/introduction.html)
