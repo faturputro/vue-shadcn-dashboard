@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, type RouteMeta } from 'vue-router'
-import DashboardLayoutVue from '@/components/DashboardLayout.vue';
+import DashboardLayoutVue from '@/layouts/dashboard.vue';
 
 interface IRouteMeta {
   title: string

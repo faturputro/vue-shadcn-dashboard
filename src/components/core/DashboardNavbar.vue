@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import GlobalSearchPopover from './GlobalSearchPopover.vue';
+import GlobalSearchPopover from '@/components/core/GlobalSearchPopover.vue';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -10,15 +10,16 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import Breadcrumb from './ui/Breadcrumb.vue';
+import Breadcrumb from '@/components/ui/Breadcrumb.vue';
 import {
   LogOut,
   User,
   Bell,
   Sun,
   MoonStar,
+  Menu,
 } from 'lucide-vue-next'
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 import { useAppStore } from '@/stores/app';
 
 const store = useAppStore();
@@ -29,13 +30,21 @@ const toggleMode = () => {
 </script>
 
 <template>
-  <nav class="flex items-center justify-between h-[64px] border-b-[1px] px-4 fixed z-40 top-0 bg-background/80 backdrop-blur-lg border-b border-border" :style="{ width: `calc(100% - ${store.sidebarExpanded ? 280 : 72}px)` }">
-    <div class="w-24">
+  <nav class="flex items-center justify-between h-[64px] border-b-[1px] px-4 fixed z-40 top-0 bg-background/80 backdrop-blur-lg border-b border-border" :style="{ width: store.navWidth }">
+    <div class="w-24 hidden lg:block">
       <Breadcrumb />
     </div>
-    <div class="w-2/5">
+    <div class="w-2/5 hidden lg:block">
       <GlobalSearchPopover />
     </div>
+    <Button
+      variant="outline"
+      class="p-[6px] w-8 h-8 transition-all duration-200 block lg:hidden"
+      :class="store.sidebarExpanded ? 'bg-transparent' : 'dark:bg-white'"
+      @click="store.toggleSidebar()"
+    >
+      <Menu class="transition-all duration-500 text-black" />
+    </Button>
     <div class="flex items-center">
       <Button variant="outline" class="border-0 p-[6px] w-8 h-8">
         <Bell />
@@ -51,7 +60,7 @@ const toggleMode = () => {
             <Avatar class="h-8 w-8">
               <AvatarImage src="https://github.com/radix-vue.png"></AvatarImage>
             </Avatar>
-            <span class="ml-2 flex justify-start flex-col items-start">
+            <span class="ml-2 hidden md:flex justify-start flex-col items-start">
               <p class="mb-0">John Doe</p>
               <small class="text-xs text-slate-400 font-light">john_doe@email.com</small>
             </span>

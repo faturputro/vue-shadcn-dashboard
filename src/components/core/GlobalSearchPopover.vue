@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Popover, PopoverTrigger, PopoverContent } from './ui/popover';
-import { Separator } from './ui/separator';
-import { Input } from './ui/input';
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
+import { Separator } from '@/components/ui/separator';
+import { Input } from '@/components/ui/input';
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import router from '@/router';

@@ -44,3 +44,7 @@ input:active, input:focus, input:blur {
   background: #999999; 
   border-radius: 10px;
 }
+
+.sidebar.is-active {
+  left: 280px;
+}

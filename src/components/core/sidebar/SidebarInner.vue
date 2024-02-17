@@ -6,8 +6,8 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from '@/components/ui/tooltip';
-import { Button } from './ui/button';
-import { ScrollArea } from './ui/scroll-area';
+import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import router from '@/router';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
@@ -27,12 +27,11 @@ const menus = computed(() => Object.entries(APP_MENU).map(([key, value]) => ({
   })
 ));
 
-const sidebarWidth = computed(() => {
-  return store.sidebarExpanded ? 280 : 64;
-});
-
 const handleNavigate = (path: string) => {
   router.push(path);
+  if (window.innerWidth < 1025) {
+    store.toggleSidebar();
+  }
 };
 
 const store = useAppStore();
@@ -43,7 +42,7 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <div class="sidebar transition-all duration-400 h-screen overflow-hidden bg-background border-r-[1px] fixed" :style="{ width:`${sidebarWidth}px` }">
+  <div class="sidebar transition-all duration-400 h-screen overflow-hidden bg-background border-r-[1px] fixed" :style="{ width:`${store.wrapperWidth}px`}">
     <div class="relative h-full flex flex-col justify-between">
       <div>
         <div class="h-[64px]">
@@ -65,7 +64,7 @@ const toggleSidebar = () => {
           </div>
         </div>
         <ScrollArea style="height: calc(100vh - 64px)">
-          <div v-for="menu in menus" :key="menu.key" class="border-b-[1px] transition-all" :class="store.sidebarExpanded ? 'px-4 py-8' : 'px-2 py-2'">
+          <div v-for="menu in menus" :key="menu.key" class="border-b-[1px] transition-all" :class="store.sidebarExpanded ? 'p-4' : 'p-2'">
             <p
               v-show="store.sidebarExpanded"
               class="uppercase text-xs font-light text-gray-400 mb-2 tracking-widest transition-all duration-300 delay-100"
@@ -101,7 +100,7 @@ const toggleSidebar = () => {
               </li>
             </ul>
           </div>
-          <div class="border-b-[1px] transition-all" :class="store.sidebarExpanded ? 'px-4 py-8' : 'px-2 py-2'">
+          <div class="border-b-[1px] transition-all" :class="store.sidebarExpanded ? 'p-4' : 'p-2'">
             <p
               v-show="store.sidebarExpanded"
               class="uppercase text-xs font-light text-gray-400 mb-2 tracking-widest transition-all duration-300 delay-100"
